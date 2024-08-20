@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela Inicial</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Imagens decorativas nas laterais -->
+    <div id="left-decorator">
+        <img src="imagens/enfeite-esquerda.png" alt="Enfeite Lateral Esquerda" class="decorative-img">
+    </div>
+    <div id="right-decorator">
+        <img src="imagens/enfeite-direita.png" alt="Enfeite Lateral Direita" class="decorative-img">
+    </div>
+
+    <div id="start-screen">
+        <img src="imagens/capa.png" alt="Capa do jogo" id="game-cover">
+        <button id="startBtn">Começar</button>
+    </div>
+
+    <audio id="backgroundMusic" src="musica/musica.mp3" preload="auto"></audio>
+
+    <script>
+        const backgroundMusic = document.getElementById('backgroundMusic');
+
+        // Verifica se a música já está tocando e começa automaticamente
+        window.onload = () => {
+            if (localStorage.getItem('musicPlaying') === 'true') {
+                backgroundMusic.play();
+            }
+        };
+
+        // Salva estado da música ao clicar no botão "Começar"
+        document.getElementById('startBtn').addEventListener('click', () => {
+            localStorage.setItem('musicPlaying', !backgroundMusic.paused);
+            window.location.href = 'game.html'; // Redireciona para a página do jogo
+        });
+
+        // Música toca na tela inicial
+        backgroundMusic.play();
+        localStorage.setItem('musicPlaying', 'true');
+    </script>
+</body>
+</html>

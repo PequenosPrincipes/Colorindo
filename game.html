@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colorir os Pequenos Príncipes</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Imagens decorativas nas laterais -->
+    <div id="left-decorator">
+        <img src="imagens/enfeite-esquerda.png" alt="Enfeite Lateral Esquerda" class="decorative-img">
+    </div>
+    <div id="right-decorator">
+        <img src="imagens/enfeite-direita.png" alt="Enfeite Lateral Direita" class="decorative-img">
+    </div>
+
+    <h1>Vamos Colorir! Pequenos Príncipes!</h1>
+    <canvas id="canvas" width="800" height="600"></canvas>
+    <div id="tools">
+        <input type="color" id="colorPicker" value="#000000">
+        <button id="brushBtn">Pincel</button>
+        <button id="bucketBtn">Balde de Tinta</button>
+        <button id="clearBtn">Limpar</button>
+        <button id="saveBtn">Salvar Imagem</button>
+        <select id="imageSelector">
+            <option value="imagens/desenho1.png">Desenho 1</option>
+            <option value="imagens/desenho2.png">Desenho 2</option>
+            <option value="imagens/desenho3.png">Desenho 3</option>
+            <option value="imagens/desenho4.png">Desenho 4</option>
+        </select>
+    </div>
+
+    <!-- Controle de música -->
+    <div id="musicControl">
+        <audio id="backgroundMusic" src="musica/musica.mp3" preload="auto" loop></audio> <!-- loop adicionado -->
+        <button id="playPauseBtn">Começar Música</button>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        const backgroundMusic = document.getElementById('backgroundMusic');
+        const playPauseBtn = document.getElementById('playPauseBtn');
+
+        // Verifica o estado da música da tela inicial e inicia o loop
+        window.onload = () => {
+            if (localStorage.getItem('musicPlaying') === 'true') {
+                backgroundMusic.play();
+                playPauseBtn.textContent = 'Pausar Música';
+            }
+        };
+
+        // Alterna reprodução/pausa da música com loop ativo
+        playPauseBtn.addEventListener('click', () => {
+            if (backgroundMusic.paused) {
+                backgroundMusic.play();
+                playPauseBtn.textContent = 'Pausar Música';
+                localStorage.setItem('musicPlaying', 'true');
+            } else {
+                backgroundMusic.pause();
+                playPauseBtn.textContent = 'Começar Música';
+                localStorage.setItem('musicPlaying', 'false');
+            }
+        });
+    </script>
+</body>
+</html>
