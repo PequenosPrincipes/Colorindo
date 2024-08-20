@@ -18,7 +18,7 @@ body {
 }
 
 #game-cover {
-    width: 300px; /* Ajusta o tamanho da imagem */
+    width: 600px; /* Ajusta o tamanho da imagem */
     height: auto; 
     display: block;
     margin-bottom: 20px; /* Espaço entre a imagem e o botão */
